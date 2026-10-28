@@ -1,0 +1,11 @@
+{
+  // Static site: `npm run build` writes dist/, Workers serves it.
+  // Without this file, `wrangler deploy` tries to auto-configure Vite and refuses Vite < 6.
+  "name": "phifarm",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    // /app has no file of its own: serve index.html and let the app pick the page.
+    "not_found_handling": "single-page-application"
+  }
+}
