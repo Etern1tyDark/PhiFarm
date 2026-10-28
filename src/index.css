@@ -1,0 +1,52 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, 'Noto Sans JP', 'Noto Sans SC', sans-serif;
+  --font-display: 'Saira', 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink-50: #f3f6fb;
+  --color-ink-100: #e2e8f2;
+  --color-ink-200: #c5cfdf;
+  --color-ink-300: #9fadc4;
+  --color-ink-400: #7b8aa3;
+  --color-ink-500: #5a6882;
+  --color-ink-600: #414d64;
+  --color-ink-700: #2c3649;
+  --color-ink-800: #1b2333;
+  --color-ink-900: #111827;
+  --color-ink-950: #070b13;
+
+  --color-accent: #7dd3fc;
+  --color-gain: #4ade80;
+  --color-loss: #f87171;
+  --color-doubt: #fde68a;
+  --color-phi: #facc15;
+
+  /* In-game difficulty colours. */
+  --color-lv-ez: #5ee08d;
+  --color-lv-hd: #3b82f6;
+  --color-lv-in: #e5484d;
+  --color-lv-at: #d4d4d8;
+  --color-lv-sp: #a855f7;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    background: var(--color-ink-950);
+  }
+  body {
+    @apply bg-ink-950 font-sans text-ink-100 antialiased;
+  }
+  ::selection {
+    @apply bg-accent/40 text-white;
+  }
+}
+
+/* Faint diagonal scanlines + glow, echoing Phigros' judge-line backdrop. */
+@utility bg-stage {
+  background-image:
+    radial-gradient(60rem 30rem at 15% -10%, rgb(125 211 252 / 0.10), transparent 60%),
+    radial-gradient(50rem 30rem at 100% 0%, rgb(168 85 247 / 0.08), transparent 60%),
+    repeating-linear-gradient(-60deg, rgb(255 255 255 / 0.018) 0 1px, transparent 1px 22px);
+}
