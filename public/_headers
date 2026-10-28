@@ -1,0 +1,14 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Vite fingerprints everything under /assets, so it can be cached forever.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Rebuilt by `npm run data`; same URL, so revalidate hourly.
+/phigros_meta.json
+  Cache-Control: public, max-age=3600
+
+/og.png
+  Cache-Control: public, max-age=86400

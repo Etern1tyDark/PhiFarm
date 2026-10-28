@@ -52,3 +52,17 @@ npm run data       # rebuild public/phigros_meta.json from open sources (~2.7 GB
   entry until a real sample is measured and added to `TEMPLATES`.
 - Songs newer than the open mirror (Introduction, Anomaly, Destination) have constants and note
   counts but no jacket hash or note breakdown; pick them by hand in the table.
+
+## SEO and link previews
+
+Discord, Twitter and most crawlers read only the served HTML, so `vite-seo.ts` writes the head tags
+at build time: title, description, canonical URL, Open Graph / Twitter card, and JSON-LD
+(`WebApplication` on both pages, `FAQPage` on the landing page, from `src/pages/faq.ts`). It also
+emits `app.html` (served at `/app` with its own title and description), `robots.txt` and
+`sitemap.xml`. The preview image is `public/og.png` (1200×630).
+
+**Set `VITE_SITE_URL`** (your public origin, no trailing slash, e.g. `https://phifarm.example.com`)
+as a build variable in Cloudflare (Settings → Build → Variables and secrets) or in
+`.env.production`. Canonical URLs, an absolute `og:image` and the sitemap need it; without it the
+build warns and link previews show no image. `public/_headers` sets long-lived caching for the
+fingerprinted `/assets/*`.

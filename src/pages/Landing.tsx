@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { BASE, btn, cx, Delta, LevelBadge, Logo } from '../components/ui';
 import type { Level } from '../lib/meta';
+import { FAQ } from './faq';
 
 const APP = `${BASE}app`;
 
@@ -106,6 +107,7 @@ export default function Landing() {
           <nav className="flex items-center gap-1 text-sm">
             <a className="hidden px-3 py-1.5 text-ink-300 hover:text-white sm:block" href="#how">How it works</a>
             <a className="hidden px-3 py-1.5 text-ink-300 hover:text-white sm:block" href="#math">The math</a>
+            <a className="hidden px-3 py-1.5 text-ink-300 hover:text-white sm:block" href="#faq">FAQ</a>
             <a className={btn('primary')} href={APP}>Open app</a>
           </nav>
         </div>
@@ -219,6 +221,20 @@ export default function Landing() {
             <a className="text-ink-200 underline decoration-ink-600 hover:decoration-accent" href="https://github.com/7aGiven/Phigros_Resource" target="_blank" rel="noreferrer">Phigros_Resource</a>{' '}
             mirror. PhiFarm is a fan project, not affiliated with Pigeon Games.
           </div>
+        </div>
+      </Section>
+
+      <Section id="faq" eyebrow="FAQ" title="Common questions" className="pt-0">
+        <div className="grid items-start gap-3 md:grid-cols-2">
+          {FAQ.map(({ q, a }) => (
+            <details key={q} className="group rounded-xl bg-ink-900/70 p-5 ring-1 ring-ink-800 open:ring-ink-600">
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-display text-lg font-semibold">
+                {q}
+                <span className="mt-1 text-ink-500 transition group-open:rotate-45">+</span>
+              </summary>
+              <p className="mt-3 text-sm leading-relaxed text-ink-400">{a}</p>
+            </details>
+          ))}
         </div>
       </Section>
 
